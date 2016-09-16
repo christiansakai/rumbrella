@@ -10,7 +10,7 @@ defmodule InfoSys.Wolfram do
   # For testing purposes we mock the backend
   @http Application.get_env(:info_sys, :wolfram)[:http_client] || :httpc
 
-  IO.inspect Application.get_env(:info_sys, :wolfram)
+  IO.inspect @http
 
   @doc """
   Using Task and link the process (since 
