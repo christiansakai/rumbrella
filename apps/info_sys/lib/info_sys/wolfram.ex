@@ -7,6 +7,9 @@ defmodule InfoSys.Wolfram do
 
   alias InfoSys.Result
 
+  # For testing purposes we mock the backend
+  @http Application.get_env(:info_sys, :wolfram)[:http_client] || :httpc
+
   @doc """
   Using Task and link the process (since 
   this is in a supervision tree) to 
@@ -49,7 +52,7 @@ defmodule InfoSys.Wolfram do
   """
   def fetch_xml(query_str) do
     {:ok, {_, _, body}} = 
-      :httpc.request(String.to_char_list("http://api.wolframalpha.com/v2/query" <> "?appid=#{app_id()}" <> "&input=#{URI.encode(query_str)}&format=plaintext"))
+      @http.request(String.to_char_list("http://api.wolframalpha.com/v2/query" <> "?appid=#{app_id()}" <> "&input=#{URI.encode(query_str)}&format=plaintext"))
       body
   end
 

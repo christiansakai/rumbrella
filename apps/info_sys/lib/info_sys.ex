@@ -61,7 +61,7 @@ defmodule InfoSys do
     # This will be passed to start_link/5 below function
     opts = [backend, query, query_ref, self(), limit]
 
-    {:ok, pid} = Supervisor.start_child(Rumbl.InfoSys.Supervisor, opts)
+    {:ok, pid} = Supervisor.start_child(InfoSys.Supervisor, opts)
     
     # Monitor the process.
     # Also sends the monitor pid so we can
