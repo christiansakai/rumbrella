@@ -19,7 +19,7 @@ defmodule InfoSys do
     InfoSys.Supervisor.start_link()
   end
 
-  @backends [Rumbl.InfoSys.Wolfram]
+  @backends [InfoSys.Wolfram]
 
   defmodule Result do
     @shortdoc """
